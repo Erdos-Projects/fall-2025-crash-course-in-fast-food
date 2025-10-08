@@ -1,0 +1,5 @@
+Data/*
+
+#These are the files we are keeping
+!Data/CrashStatisticsFranklinCounty.csv
+!Data/CrashStatisticsFranklinCountyNarrative.csv
