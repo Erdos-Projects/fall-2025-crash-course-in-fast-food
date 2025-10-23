@@ -2,6 +2,8 @@ Data/*
 cache/
 
 #These are the files we are keeping
-!Data/fastfood_ohio.gpkg
+!Data/fastfood_ohio.gpkg 
+!Data/fastfood_all_ohio.gpkg 
+!Data/fastfood_nodrivethrough_ohio.gpkg
 !Data/CrashStatisticsFranklinCounty.csv
 !Data/CrashStatisticsFranklinCountyNarrative.csv

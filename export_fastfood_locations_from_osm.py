@@ -30,18 +30,21 @@ import plotly.express as px
 ohio = ox.geocode_to_gdf("Ohio, USA")
 
 # Get all fast-food drive-through locations
-fastfood = ox.features_from_place(
-    "Ohio, USA",
-    tags={"amenity": "fast_food", "drive_through": "yes"}
-)
+#fastfood = ox.features_from_place("Ohio, USA", tags={"amenity": "fast_food", "drive_through": "yes"})
+#fastfood = ox.features_from_place("Ohio, USA", tags={"amenity": "fast_food", "drive_through": "no"})
+fastfood = ox.features_from_place("Ohio, USA", tags={"amenity": "fast_food"})
+
 
 #more strict filtering... before this line also banks with drive through showed up
-fastfood = fastfood[(fastfood["amenity"]=="fast_food") & (fastfood["drive_through"]=="yes")]
+#fastfood = fastfood[(fastfood["amenity"]=="fast_food") & (fastfood["drive_through"]=="yes")]
+#fastfood = fastfood[(fastfood["amenity"]=="fast_food") & (fastfood["drive_through"]=="no")]
+fastfood = fastfood[(fastfood["amenity"]=="fast_food")]
 
 # Extract coordinates
 fastfood_proj = fastfood.to_crs(epsg=4326)  # project to meters
 fastfood["lat"] = fastfood_proj.centroid.y
 fastfood["lon"] = fastfood_proj.centroid.x
+
 
 # opening a map to check if those locations make sense
 
@@ -59,7 +62,8 @@ fig = px.scatter_map(
 
 fig.show()
 
-fastfood.to_file("Data/fastfood_ohio.gpkg", layer="fastfood", driver="GPKG")
+#fastfood.to_file("Data/fastfood_ohio.gpkg", layer="fastfood", driver="GPKG")
+fastfood.to_file("Data/fastfood_all_ohio.gpkg", layer="fastfood", driver="GPKG")
 
 
 
