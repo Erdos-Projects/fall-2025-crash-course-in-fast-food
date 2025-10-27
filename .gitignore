@@ -7,3 +7,13 @@ cache/
 !Data/fastfood_nodrivethrough_ohio.gpkg
 !Data/CrashStatisticsFranklinCounty.csv
 !Data/CrashStatisticsFranklinCountyNarrative.csv
+
+# Ignore everything in presentations except .tex and .pdf
+presentations/*
+!presentations/*.tex
+!presentations/*.pdf
+
+# Ignore everything in executive summary except .tex and .pdf
+executive summary/*
+!executive summary/*.tex
+!executive summary/*.pdf
