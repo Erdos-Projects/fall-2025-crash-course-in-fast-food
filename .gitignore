@@ -9,9 +9,9 @@ cache/
 !Data/CrashStatisticsFranklinCountyNarrative.csv
 
 # Ignore everything in presentations except .tex and .pdf
-presentations/*
-!presentations/*.tex
-!presentations/*.pdf
+presentation/*
+!presentation/*.tex
+!presentation/*.pdf
 
 # Ignore everything in executive summary except .tex and .pdf
 executive summary/*

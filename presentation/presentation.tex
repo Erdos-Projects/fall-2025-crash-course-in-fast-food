@@ -1,0 +1,127 @@
+\documentclass{beamer}
+
+% Use a clean theme
+\usetheme{Madrid}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+%\renewcommand{\familydefault}{\sfdefault}
+\definecolor{OSUScarlet}{RGB}{187,0,0}
+\definecolor{OSUGray}{RGB}{102,102,102}
+
+% Apply colors
+\setbeamercolor{title}{bg=OSUScarlet}
+\setbeamercolor{frametitle}{bg=OSUScarlet}
+\setbeamercolor{structure}{fg=OSUScarlet} % items, sections
+\setbeamercolor{section in toc}{fg=OSUScarlet}
+\setbeamercolor{block title}{bg=OSUScarlet!20, fg=OSUScarlet}
+\setbeamercolor{block body}{bg=OSUGray!10, fg=black}
+
+% Title info
+\title{Crash Course in Fast Food}
+\subtitle{You live dangerously if you are hungry}
+\author{Ann-Kathrin Raab \& Larissa Boie}
+%\institute{The Ohio State University}
+\date{\today}
+
+\begin{document}
+
+% Title page
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Outline
+%\begin{frame}{Outline}
+%    \tableofcontents
+%\end{frame}
+
+\section{Motivation}
+\begin{frame}{Behind the Wheel, Beyond the Meal: The Motivation for Our Study}
+    \begin{itemize}
+        \item real-life image of a situation
+        \item google maps/OSM screenshot of typical drive through intersection
+        \item is this just anecdotal evidence?
+    \end{itemize}
+\end{frame}
+
+\section{Data Overview}
+\begin{frame}{From Bites to Bytes: Building Our Dataset}
+    \begin{block}{Source for Fast-Food locations}
+        \begin{itemize}
+            \item Open Street Map API
+            \item 6153 locations in Ohio
+            \item Issue: 'drive-through' tag often 'None' instead of 'yes/no'
+            
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Source for Crashes}
+        \begin{itemize}
+            \item Public records request to  Ohio Department of Public Safety
+            \item Period: Sep 2019--Sep 2025 (5 full years)
+            \item Total number of crashes: 1.289.913
+            \item Main filter: explicit mention of fast-food place in the crash report narrative (32.760)
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+
+\begin{frame}{Fast-food location filtering and things to compare}
+    Our subsets to compare and the reasoning behind it:
+    \begin{itemize}
+        \item Top 20 non-pizza fast food chains
+        \begin{itemize}
+            \item In queue, food is handed through window
+            \item Stressful situation to handle food and driving away at the same time, very distracted
+        \end{itemize}
+        \item Top X pizza chains
+        \begin{itemize}
+            \item Food is brought to the curb
+            \item No pressure of having to make space for someone immideatly, more relaxed
+            \item Less distraction
+        \end{itemize} 
+        \item Top Y coffee chains
+        \begin{itemize}
+            \item Does the need for coffeine play a role?
+        \end{itemize}
+        \item Top Z gas stations
+        \begin{itemize}
+            \item similar road situation, but less distracted due to food
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\section{Analysis}
+\begin{frame}{Beyond the Drive-Thru: What the Data Really Says}
+    \begin{itemize}
+        \item Causality vs Correlation
+        \item Graph of Crashes over hour of the day, peak at lunch for fast-food crashes
+    \end{itemize}
+    %\centering
+    % Placeholder for map
+    %\fbox{\parbox[c][5cm][c]{8cm}{\centering Map goes here}}
+\end{frame}
+
+\begin{frame}{Trends Over Time}
+    \centering
+    % Placeholder for plot
+    \fbox{\parbox[c][5cm][c]{8cm}{\centering Trend plot goes here}}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Key Takeaways}
+    \begin{itemize}
+        \item Placeholder conclusion 1
+        \item Placeholder conclusion 2
+        \item Placeholder conclusion 3
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Thank You!}
+    \centering
+    Questions?
+\end{frame}
+
+\end{document}
