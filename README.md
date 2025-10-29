@@ -44,7 +44,14 @@ Ohio) and look for amenities with the label "fast food". To verify that the extr
 <img width="547" height="450" alt="overview_fast_food_locations_Columbus" src="https://github.com/user-attachments/assets/35f1d87e-8de9-4439-823b-5e6801cd2039" />
 
 
-### How to do cross-validation
+### What we compare
 
-This will be filled once we know.
+Our assumption of drive-throughs being specifically prone to accidents and near misses will be tested against a very similar type of restaurant involving easily accessible food, but almost never a drive through: pizza restaurants. Take-out is still very common, but as pizza is considered an item that takes too long to prepare for a drive-through workflow to work efficiently, people call ahead and pick up their order. This might be a more intentional action than the drive-through, where you don't really stop the car, you don't get out of the car etc.
+
+Filtering for restaurants with the cuisine labeled "pizza" shows these locations:
+
+<img width="535" height="450" alt="overview_pizza_locations_Columbus" src="https://github.com/user-attachments/assets/c7e35ad3-7779-453e-9dc9-30692cc9243a" />
+
+
+
 
