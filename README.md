@@ -38,6 +38,12 @@ While this data contains the data from the whole state of Ohio, we will only use
 
 We use the [crash dashboard](https://statepatrol.ohio.gov/dashboards-statistics/ostats-dashboards/crash-dashboard) and connect it to location details via the [Google Maps API](https://developers.google.com/maps/apis-by-platform) which not only tells us the location of the relevant restaurants, but also reveals information on pedestrian crossings, lights, and sharp corners. To have a large enough dataset, we use information from the years 20xx - 20xx.
 
+Open Street Maps (OSM) contains tags for landmarks, sights and also restaurants. If they are properly categorized, we can use a certain geographic unit (in our case the state of 
+Ohio) and look for amenities with the label "fast food". To verify that the extraction of locations with their latidude and longitude coorinates works as expected, we plot all "fast food" marks:
+
+<img width="547" height="450" alt="overview_fast_food_locations_Columbus" src="https://github.com/user-attachments/assets/35f1d87e-8de9-4439-823b-5e6801cd2039" />
+
+
 ### How to do cross-validation
 
 This will be filled once we know.
