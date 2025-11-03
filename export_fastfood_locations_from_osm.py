@@ -7,11 +7,15 @@ The Open Street Map (OSM) API is used.
 A figure is created with a map to check the validity of the found locations.
 
 '''
+#%% load modules
 import os
+import pandas as pd
+import osmnx as ox
+import plotly.express as px
 
-
+#%% get the data
 # Path to the Conda environment
-conda_env = r"C:\Users\raab.75\AppData\Local\miniconda3\envs\erdos_ds_environment"
+conda_env = r"C:\Users\boie.2\.conda\envs\erdos_ds_environment"
 
 os.environ["GDAL_DATA"] = os.path.join(conda_env, "Library", "share", "gdal")
 os.environ["PROJ_LIB"] = os.path.join(conda_env, "Library", "share", "proj")
@@ -21,10 +25,6 @@ os.environ["PROJ_LIB"] = os.path.join(conda_env, "Library", "share", "proj")
 #print("GDAL_DATA:", os.environ.get("GDAL_DATA"))
 #print("PROJ_LIB:", os.environ.get("PROJ_LIB"))
 
-
-import pandas as pd
-import osmnx as ox
-import plotly.express as px
 
 
 ohio = ox.geocode_to_gdf("Ohio, USA")
@@ -45,25 +45,26 @@ fastfood_proj = fastfood.to_crs(epsg=4326)  # project to meters
 fastfood["lat"] = fastfood_proj.centroid.y
 fastfood["lon"] = fastfood_proj.centroid.x
 
-
+#%%
 # opening a map to check if those locations make sense
 
 
-fig = px.scatter_map(
-    fastfood,
-    lat="lat",
-    lon="lon",
-    hover_name="name",       # optional, if 'name' column exists
-    zoom=9,                  # adjust zoom to fit Franklin County
-    size_max=10,
-    map_style="carto-positron",
-    title="Fast-Food Drive-Throughs in Ohio"
-)
+fig = px.scatter_map(fastfood,
+                     lat="lat",
+                     lon="lon",
+                     hover_name="name",       # optional, if 'name' column exists
+                     zoom=9,                  # adjust zoom to fit Franklin County
+                     size_max=10,
+                     map_style="carto-positron",
+                     title="Fast-Food Drive-Throughs in Ohio"
+                     )
 
 fig.show()
 
 #fastfood.to_file("Data/fastfood_ohio.gpkg", layer="fastfood", driver="GPKG")
 fastfood.to_file("Data/fastfood_all_ohio.gpkg", layer="fastfood", driver="GPKG")
 
+#%% save as csv if desired
+fastfood.to_csv("Data/fastfood_all_ohio.csv", index=False)
 
-
+# %%

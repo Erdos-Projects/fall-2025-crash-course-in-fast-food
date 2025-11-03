@@ -42,6 +42,11 @@ pizza_places = pizza_places[(pizza_places["amenity"].isin(["restaurant", "fast_f
 # the word "pizza", but potentially also other words
 pizza_places = pizza_places[pizza_places["cuisine"].str.contains("pizza", case=False, na=False)]
 
+# there are columns with issues (but they have no relevant entries, so we can just drop them)
+pizza_places = pizza_places.drop(columns=["Fixme"])
+pizza_places = pizza_places.drop(columns=["FIXME"])
+
+
 # Project to WGS84 for map
 pizza_places_proj = pizza_places.to_crs(epsg=4326)
 pizza_places["lat"] = pizza_places_proj.centroid.y
@@ -67,3 +72,5 @@ pizza_places.to_file("Data/pizza_places_ohio.gpkg", layer="pizza_places", driver
 # %% save as csv if desired
 
 pizza_places.to_csv("Data/pizza_places_ohio.csv", index=False)
+
+# %%
