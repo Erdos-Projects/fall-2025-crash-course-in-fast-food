@@ -13,6 +13,7 @@ cache/
 !Data/CrashStatisticsFranklinCountyNarrative.csv
 !Data/Franklin_DocumentNumber_Narrative_part1.csv
 !Data/Franklin_DocumentNumber_Narrative_part2.csv
+!Data/Fastfood_filtered_narratives_DocumentNumber.csv
 
 
 # Ignore everything in presentations except .tex and .pdf
