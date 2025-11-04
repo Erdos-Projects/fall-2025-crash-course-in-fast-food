@@ -11,6 +11,9 @@ cache/
 !Data/coffee_places_ohio.gpkg
 !Data/CrashStatisticsFranklinCounty.csv
 !Data/CrashStatisticsFranklinCountyNarrative.csv
+!Data/Franklin_DocumentNumber_Narrative_part1.csv
+!Data/Franklin_DocumentNumber_Narrative_part2.csv
+
 
 # Ignore everything in presentations except .tex and .pdf
 presentation/*
