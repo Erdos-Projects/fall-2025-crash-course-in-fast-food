@@ -53,5 +53,13 @@ Filtering for restaurants with the cuisine labeled "pizza" shows these locations
 <img width="535" height="450" alt="overview_pizza_locations_Columbus" src="https://github.com/user-attachments/assets/c7e35ad3-7779-453e-9dc9-30692cc9243a" />
 
 
+### Our modeling approach
+
+We employ a regression model to connect the density of car crashes with the density of fast food restaurant chains. More precisely, we model the spatial distribution of car crashes as a function of fast-food restaurant proximity. Using the model, we want to identify a potential correlation between crash incidents and fastfood locations deviating from random spatial distribution.
+
+The geographically weighted regression (GWR) model takes into account that loacal coefficients can very spatially, identifying regional differences in the strength and direction of the observables. Applying this model, we want to identify potential hotspots with above-average correlation between crash sites and fastfood chain locations.
+
+Our model thus takes the following form:
+
 
 
