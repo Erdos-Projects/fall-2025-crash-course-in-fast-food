@@ -17,6 +17,7 @@ cache/
 !Data/Fastfood_filtered_narratives_DocumentNumber.csv
 !Data/Franklin_DocumentNumber_Narrative_Latitude_Longitude_full.csv
 !Data/Franklin_DocumentNumber_Narrative_full.csv
+!Data/Municipal_Boundaries.*
 
 
 # Ignore everything in presentations except .tex and .pdf
