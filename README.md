@@ -5,6 +5,7 @@ This project has been developed during the Erdos Institute Data Science Boot Cam
 
 Team: [Larissa Boie](https://github.com/larissaboie) & [Ann-Kathrin Raab](https://github.com/anka-raab)
 
+[Jump to Description of Repository](#description-of-repository)
 
 ### The goal
 
@@ -126,5 +127,20 @@ The GWR on a map (which only fits roughly because of the grid to perform the reg
 
 <img width="869" height="450" alt="grid_map_GWR_statistics" src="https://github.com/user-attachments/assets/48c8183a-55fa-4c0f-bd31-7794e6da52f9" />
 
+# Description of Repository
+
+The content is presented in the following folders:
+
+### Data
+Contains partial and filtered csv that have been generated from the main file received via download link from the Ohio Department of Transportation. Furthermore, there are .gpkg files where location coordinates have been transformed to geospatial dataframes for plotting.
+
+### executive summary
+Contains both the .tex file and the pdf generated from the file. The file has been created using Overleaf. While Overleaf allows for zip file export to include all connected files, we believed that this was not necessary for the goal of the report.
+
+### presentation
+Contains the .tex and pdf of the presentation. As the executive summary, the file has been created using Overleaf. The recording is not included due to file size restrictions.
+
+### Notebooks
+Contains the Jupyter notebooks that were used for data exploration, modeling, visualization and further analysis.
 
 
