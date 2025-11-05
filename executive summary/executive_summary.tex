@@ -12,37 +12,80 @@
 \usepackage{natbib} % For bibliography
 \usepackage{setspace} % Line spacing
 \usepackage{xcolor}
+\usepackage{wrapfig} % text surrounding figure
 
 % ====== Metadata ======
-\title{Crash Course in Fast Food: Executive Summary}
+\title{\vspace{-80pt}Crash Course in Fast Food: Executive Summary}
 \author{
-  Ann-Kathrin Raab$^{1,2}$ \&
+  Ann-Kathrin Raab$^{1}$ \&
   Larissa Boie$^{1}$ \\
   \small $^{1}$The Ohio State University \\
-  \small $^{2}$University of Gothenburg
+  \small The Erd\H{o}s Institute Fall 2025 Data Science Boot Camp \\
+  \small \url{https://github.com/Erdos-Projects/fall-2025-crash-course-in-fast-food}  
 }
-\date{\today}
+\date{}
 
 % ====== Document ======
 \begin{document}
 
 \maketitle
-
+\vspace{-30pt}
 \section{Introduction}
-A 2 page document
+As frequent pedestrians and cyclists, our commute in the city of Columbus, OH, does not always feel safe to us. Living in a busy urban area where lots of fast food chains are located conveniently for people driving in and out of town, anecdotal evidence seems to indicate that our most dangerous car encounters happen when people drive in and out the drive-through areas of these restaurants. We believe that the large speed difference between cars on the road and cars entering the road leads to many dangerous situations, making accidents more probable. Likely, drive-through costumers are on a slightly higher stress level than drivers who are not trying to optimize their time for food intake.
+
+Understanding if there are accident ''hot spots`` close to the drive-through restaurants can help improving road safety for all participants. As the city of Columbus is growing, the information can be useful when developing new neighborhoods with a mix of residential and commercial areas. Evaluating if certain commercial vendors need extra signage, more space, or maybe even a redesign of the entrance and exit driveways will help plan the development of future mixed residential/commercial areas. 
+
+We do not focus on general accident causes or general road improvements. Our analysis only includes locations of fast food restaurants, as these are places where we observe significant incoming and outgoing traffic and these places can be easily located on online maps, as all restaurant chains have marked their locations online.
+
 
 \section{Dataset and Stakeholders}
-We requested the crash data from the Ohio Department of Public Safety, 
-and recieved a CSV file containing information on 
-1.289.913 incidents within the timeframe of September 2019 to September 2025, covering the whole state of Ohio. 
+We requested the crash data from the Ohio Department of Public Safety, and received a CSV file containing information on 1.289.913 incidents within the time frame from September 2019 to September 2025, covering the whole state of Ohio. \\
+
+Our analysis can help developers, road planning offices, and the franchise owners alike, making the restaurant experience not only pleasant, but also safe. The Ohio Department of Public Safety is another stakeholder, as the results can inform their road safety agenda.
 
 
-\section{Preprosessing}
+\section{Preprocessing}
+The dataset includes accidents involving cars in the whole state of Ohio. We thus extract a dataset only for Franklin county. Afterwards, we use the so-called ``Narrative'', a short incident summary, to look for references to the restaurants.
+
+We want to compare the drive-through aspect of ``getting food'' with places that require more time, i.e.~a pizza restaurant. Although these places are often located at similar spots as the fast food chains, pizza restaurants usually do not have a drive-through option, as preparing pizza takes too long to be efficient for customers waiting in their cars. We therefore filter our dataset using the top ten chain brands for each category.
+
+\section{Analysis Methods}
+
+We perform a Geographically Weighted Regression (GWR) that evaluates if an event at a certain location is more likely than its statistical distribution. The GWR model takes into account that loacal coefficients can very spatially, identifying regional differences in the strength and direction of the observables. Applying this model, we want to identify potential hotspots with above-average correlation between crash sites and fast food chain locations.
+
+Furthermore, we apply a Moran's $I$ statistical analysis to map the geospatial autocorrelation in a meaningful way. 
+
+\section{Results and Discussion}
+
+We compare the correlation map for Franklin county fast food and pizza restaurant locations. Note that the overall scale for the correlation is by a factor four larger for the fast food restaurants than for the pizza restaurants. While we do see mostly slightly positive correlations for our datapoints, the South West of Columbus seems to have more extreme values. We attribute this to a low density of restaurants, making one event already highly correlated, both for the extremely positive correlation in the fast food data, and for the negative correlation in the pizza data.
+\begin{figure}
+    \begin{minipage}[c]{0.43\linewidth}
+        %\centering
+        \includegraphics[width=\linewidth]{images/grid_GWR_statistics.png}
+        \caption{GWR for fast food restaurant locations and crash density}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.47\linewidth}
+        \includegraphics[width=\linewidth]{images/grid_GWR_statistics_pizza.png}
+        \caption{GWR for pizza restaurant locations and crash density}
+    \end{minipage}
+\end{figure}
+
+%\begin{equation*}
+%        D_{\text{Crash}}(x,y) = a(x,y) + b(x,y) \cdot D_{\text{Fastfood}}(x,y) + c
+%    \end{equation*}
+%with the densities $D$ for crash events and fast food restaurant locations, the spatial coordinates $(x,y)$, represented by longitude and latitude values, and $a(x,y)$ the intercept term of the regression giving us the expected value for no correlation at a specific location $(x,y)$. With $a(x,y)$ we can describe naturally occurring higher densities in the crash map (e.g. a narrow curve, a blind turn), that have nothing to do with the location of fast food restaurants. Parameter $b(x,y)$ hints at the strength of the relationship between car crash location and fast food restaurant location. \\
+
+%With the residual $c$ we can identify weaknesses of the model or other irregularities. \\
+
+The GWR seems to indicate slight positive correlation with many fast food restaurant locations, supporting our initial claim. As we could not read all individual crash report narratives, some entries might simply use the restaurant as a landmark, giving us false-positive clusters. A more elaborate text analysis could help us mitigate these effects.
+    
+As OpenStreetMap is a volunteer-driven project, the original dataset lacked some specific information or was not always complete. We could thus not accurately determine if a restaurant has a drive-thru option. This made our analysis more speculative than we would have wanted it to be.
 
 
-\section{Results}
 
 
 \section{Future Goals}
 
+The comparison between different types of food venues can be taken further to other types of shops near the road. We could use coffee shop locations and identify if dinner and caffeine cravings lead to different levels of attention. To take out the food component completely, we can compare the crash locations to gas stations nearby. Their design is similar to restaurant drive-thrus, but since the main focus of a gas station is fuel and not dinner, the mood of the costumers might be very different.
 \end{document}
