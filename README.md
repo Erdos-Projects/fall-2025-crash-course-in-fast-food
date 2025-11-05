@@ -74,7 +74,7 @@ With the residual $c$ we can identify weaknesses of the model or other irregular
 
 The GWR gives the following parameters:
 ```
-Optimal bandwidth: 56.0
+Optimal bandwidth: 51.0
 ===========================================================================
 Model type                                                         Gaussian
 Number of observations:                                                 292
@@ -98,41 +98,105 @@ X1                                  11.659      2.335      4.994      0.000
 Geographically Weighted Regression (GWR) Results
 ---------------------------------------------------------------------------
 Spatial kernel:                                           Adaptive bisquare
-Bandwidth used:                                                      56.000
+Bandwidth used:                                                      51.000
 
 Diagnostic information
 ---------------------------------------------------------------------------
-Residual sum of squares:                                         569334.446
-Effective number of parameters (trace(S)):                           27.626
-Degree of freedom (n - trace(S)):                                   264.374
-Sigma estimate:                                                      46.406
-Log-likelihood:                                                   -1520.349
-AIC:                                                               3097.950
-AICc:                                                              3104.415
-BIC:                                                               3203.202
-R2:                                                                   0.296
-Adjusted R2:                                                          0.222
-Adj. alpha (95%):                                                     0.004
-Adj. critical t value (95%):                                          2.933
+Residual sum of squares:                                         556601.790
+Effective number of parameters (trace(S)):                           30.347
+Degree of freedom (n - trace(S)):                                   261.653
+Sigma estimate:                                                      46.122
+Log-likelihood:                                                   -1517.046
+AIC:                                                               3096.786
+AICc:                                                              3104.596
+BIC:                                                               3212.040
+R2:                                                                   0.312
+Adjusted R2:                                                          0.232
+Adj. alpha (95%):                                                     0.003
+Adj. critical t value (95%):                                          2.963
 
 Summary Statistics For GWR Parameter Estimates
 ---------------------------------------------------------------------------
 Variable                   Mean        STD        Min     Median        Max
 -------------------- ---------- ---------- ---------- ---------- ----------
-X0                       37.755     19.589     -4.910     34.071     86.580
-X1                       11.793      8.201     -1.957     11.750     42.317
+X0                       37.911     20.938     -6.478     34.259     90.050
+X1                       11.792      8.699     -3.350     11.644     43.793
 ===========================================================================
 ```
+A spatical correlogram using Moran's $I$ statistical analysis shows clustering and outliers in the correlation between crash site and fastfood restaurant location.
+
+<img width="545" height="391" alt="spatial_correlogram" src="https://github.com/user-attachments/assets/994d5118-6d25-4173-b7b7-41f41d1d0a1b" />
+
+While the spatial correlogram shows a decreasing trend for a larger number of nearest neighbors, indicating that the autocorrelation weakens for increasing distances. The high positive Moran's $I$ number for short distances hints at strong spatial clustering. To further evaluate the clustering, we apply the geographically weighted regression to search for hotspots of correlation between fastfood location proximity and crash report density.
+
 The GWR on a map (which only fits roughly because of the grid to perform the regression) looks like this:
 
-<img width="869" height="450" alt="grid_map_GWR_statistics" src="https://github.com/user-attachments/assets/48c8183a-55fa-4c0f-bd31-7794e6da52f9" />
+<img width="869" height="450" alt="grid_map_GWR_statistics" src="https://github.com/user-attachments/assets/11ae9dd0-fbb2-40bf-879c-0ab410ace9b3" />
+
+For comparison, the same analysis is performed for the locations of pizza restaurants.
+```
+Optimal bandwidth: 129.0
+===========================================================================
+Model type                                                         Gaussian
+Number of observations:                                                 134
+Number of covariates:                                                     2
+
+Global Regression Results
+---------------------------------------------------------------------------
+Residual sum of squares:                                         318108.051
+Log-likelihood:                                                    -710.882
+AIC:                                                               1425.765
+AICc:                                                              1427.949
+BIC:                                                             317461.536
+R2:                                                                   0.001
+Adj. R2:                                                             -0.007
+
+Variable                              Est.         SE  t(Est/SE)    p-value
+------------------------------- ---------- ---------- ---------- ----------
+X0                                  41.804     11.201      3.732      0.000
+X1                                   3.220      8.905      0.362      0.718
+
+Geographically Weighted Regression (GWR) Results
+---------------------------------------------------------------------------
+Spatial kernel:                                           Adaptive bisquare
+Bandwidth used:                                                     129.000
+
+Diagnostic information
+---------------------------------------------------------------------------
+Residual sum of squares:                                         304816.932
+Effective number of parameters (trace(S)):                            4.316
+Degree of freedom (n - trace(S)):                                   129.684
+Sigma estimate:                                                      48.481
+Log-likelihood:                                                    -708.023
+AIC:                                                               1426.677
+AICc:                                                              1427.203
+BIC:                                                               1442.081
+R2:                                                                   0.043
+Adjusted R2:                                                          0.011
+Adj. alpha (95%):                                                     0.023
+Adj. critical t value (95%):                                          2.297
+
+Summary Statistics For GWR Parameter Estimates
+---------------------------------------------------------------------------
+Variable                   Mean        STD        Min     Median        Max
+-------------------- ---------- ---------- ---------- ---------- ----------
+X0                       40.725     10.181     29.067     36.398     62.444
+X1                        5.730      5.869     -8.084      8.850     11.054
+===========================================================================
+```
+
+
+
+### Discussion
+
+We observe very little to no negative 
 
 # Description of Repository
 
 The content is presented in the following folders:
 
 ### Data
-Contains partial and filtered csv that have been generated from the main file received via download link from the Ohio Department of Transportation. Furthermore, there are .gpkg files where location coordinates have been transformed to geospatial dataframes for plotting.
+Contains partial and filtered csv that have been generated from the main file received via download link from the Ohio Department of Public Safety. Furthermore, there are .gpkg files where location coordinates have been transformed to geospatial dataframes for plotting.
 
 ### executive summary
 Contains both the .tex file and the pdf generated from the file. The file has been created using Overleaf. While Overleaf allows for zip file export to include all connected files, we believed that this was not necessary for the goal of the report.
