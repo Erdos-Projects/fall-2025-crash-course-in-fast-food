@@ -69,3 +69,62 @@ with the densities $D$ for crash events and fastfood restaurant locations, the s
 
 With the residual $c$ we can identify weaknesses of the model or other irregularities.
 
+### Results
+
+The GWR gives the following parameters:
+```
+Optimal bandwidth: 56.0
+===========================================================================
+Model type                                                         Gaussian
+Number of observations:                                                 292
+Number of covariates:                                                     2
+
+Global Regression Results
+---------------------------------------------------------------------------
+Residual sum of squares:                                         744856.084
+Log-likelihood:                                                   -1559.582
+AIC:                                                               3123.164
+AICc:                                                              3125.248
+BIC:                                                             743209.825
+R2:                                                                   0.079
+Adj. R2:                                                              0.076
+
+Variable                              Est.         SE  t(Est/SE)    p-value
+------------------------------- ---------- ---------- ---------- ----------
+X0                                  35.681      5.042      7.077      0.000
+X1                                  11.659      2.335      4.994      0.000
+
+Geographically Weighted Regression (GWR) Results
+---------------------------------------------------------------------------
+Spatial kernel:                                           Adaptive bisquare
+Bandwidth used:                                                      56.000
+
+Diagnostic information
+---------------------------------------------------------------------------
+Residual sum of squares:                                         569334.446
+Effective number of parameters (trace(S)):                           27.626
+Degree of freedom (n - trace(S)):                                   264.374
+Sigma estimate:                                                      46.406
+Log-likelihood:                                                   -1520.349
+AIC:                                                               3097.950
+AICc:                                                              3104.415
+BIC:                                                               3203.202
+R2:                                                                   0.296
+Adjusted R2:                                                          0.222
+Adj. alpha (95%):                                                     0.004
+Adj. critical t value (95%):                                          2.933
+
+Summary Statistics For GWR Parameter Estimates
+---------------------------------------------------------------------------
+Variable                   Mean        STD        Min     Median        Max
+-------------------- ---------- ---------- ---------- ---------- ----------
+X0                       37.755     19.589     -4.910     34.071     86.580
+X1                       11.793      8.201     -1.957     11.750     42.317
+===========================================================================
+```
+The GWR on a map (which only fits roughly because of the grid to perform the regression) looks like this:
+
+<img width="869" height="450" alt="grid_map_GWR_statistics" src="https://github.com/user-attachments/assets/48c8183a-55fa-4c0f-bd31-7794e6da52f9" />
+
+
+
