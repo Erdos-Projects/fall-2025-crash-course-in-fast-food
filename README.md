@@ -61,5 +61,11 @@ The geographically weighted regression (GWR) model takes into account that loaca
 
 Our model thus takes the following form:
 
+$$
+D_{\text{Crash}}(x,y) = a(x,y) + b(x,y) \cdot D_{\text{Fastfood}}(x,y) + c
+$$
 
+with the densities $D$ for crash events and fastfood restaurant locations, the spatial coordinates $(x,y)$, represented by longitude and latitude values, and $a(x,y)$ the intercept term of the regression giving us the expected value for no correlation at a specific location $(x,y)$. With $a(x,y)$ we can describe naturally occurring higher densities in the crash map (e.g. a narrow curve, a blind turn), that have nothing to do with the location of fastfood restaurants. Parameter $b(x,y)$ hints at the strength of the relationship between car crash location and fastfood restaurant location. 
+
+With the residual $c$ we can identify weaknesses of the model or other irregularities.
 
