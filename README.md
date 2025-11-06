@@ -207,4 +207,7 @@ Contains the .tex and pdf of the presentation. As the executive summary, the fil
 ### Notebooks
 Contains the Jupyter notebooks that were used for data exploration, modeling, visualization and further analysis.
 
+1. statistics_fastfood.ipynb and statistics_pizza.ipnb
+   We use the esda module for a Moran analysis and the mgwr module to perform the correlation with a grid coordinate system.
+
 
