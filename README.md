@@ -201,9 +201,6 @@ Contains partial and filtered csv that have been generated from the main file re
 ### executive summary
 Contains both the .tex file and the pdf generated from the file. The file has been created using Overleaf. While Overleaf allows for zip file export to include all connected files, we believed that this was not necessary for the goal of the report.
 
-### presentation
-Contains the .tex and pdf of the presentation. As the executive summary, the file has been created using Overleaf. The recording is not included due to file size restrictions.
-
 ### Notebooks
 Contains the Jupyter notebooks that were used for data exploration, modeling, visualization and further analysis.
 
@@ -214,5 +211,14 @@ Contains the Jupyter notebooks that were used for data exploration, modeling, vi
 3. export_XX_locations_from_osm.py
    
    There are three python scripts that obtain the data of a certain type of location from the OSM (OpenStreetMap) overpass API. The data extraction is refined using the boundaries of the state of Ohio. Furthermore, depending on the category, certain name adjustments are implemented to account for inconsistent naming conventions and heterogeneous tags/keywords regarding cuisine.
+
+4. crash_data_fullfile_checks.ipynb
+
+   This file loads the original file such that one can extract relevant columns to new smaller csv files that one can use as dataframes in the notebooks.
+
+
+
+### presentation
+Contains the .tex and pdf of the presentation. As the executive summary, the file has been created using Overleaf. The recording is not included due to file size restrictions.
 
 
