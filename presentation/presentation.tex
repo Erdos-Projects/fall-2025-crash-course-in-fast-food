@@ -2,6 +2,7 @@
 
 % Use a clean theme
 \usetheme{Madrid}
+\setbeamertemplate{page number in head/foot}[framenumber]
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 %\renewcommand{\familydefault}{\sfdefault}
@@ -18,10 +19,10 @@
 
 % Title info
 \title{Crash Course in Fast Food}
-\subtitle{You live dangerously if you are hungry}
+\subtitle{}
 \author{Ann-Kathrin Raab \& Larissa Boie}
 %\institute{The Ohio State University}
-\date{\today}
+\date{November 5, 2025}
 
 \begin{document}
 
@@ -36,21 +37,28 @@
 %\end{frame}
 
 \section{Motivation}
-\begin{frame}{Behind the Wheel, Beyond the Meal: The Motivation for Our Study}
-    \begin{itemize}
-        \item real-life image of a situation
-        \item google maps/OSM screenshot of typical drive through intersection
-        \item is this just anecdotal evidence?
-    \end{itemize}
+\begin{frame}{Behind the Wheel, beyond the Meal:\newline Anecdotal evidence or a real danger?}
+    
+    \begin{center}
+    \includegraphics[width=0.8\textwidth]{images/5th_cropped.jpg}
+    \end{center}
+    
 \end{frame}
 
 \section{Data Overview}
 \begin{frame}{From Bites to Bytes: Building Our Dataset}
-    \begin{block}{Source for Fast-Food locations}
+    \begin{block}{Source for Fast-Food}
         \begin{itemize}
-            \item Open Street Map API
-            \item 6153 locations in Ohio
-            \item Issue: 'drive-through' tag often 'None' instead of 'yes/no'
+            \item Open Street Map \& Overpass API
+            \item Extraction of (fast-food) coordinates and road features\\ 
+            (e.g.~traffic lights, stop signs)
+            \item Format: name/item \& coordinates for different subcategories of places
+            \begin{itemize}
+                \item Food-through-window Drive-thrus
+                \item Curbside pickup
+            \end{itemize}
+            
+            %\item Issue: 'drive-through' tag often 'None' instead of 'yes/no'
             
         \end{itemize}
     \end{block}
@@ -58,70 +66,142 @@
     \begin{block}{Source for Crashes}
         \begin{itemize}
             \item Public records request to  Ohio Department of Public Safety
-            \item Period: Sep 2019--Sep 2025 (5 full years)
-            \item Total number of crashes: 1.289.913
-            \item Main filter: explicit mention of fast-food place in the crash report narrative (32.760)
+            \begin{itemize}
+                \item csv file: 1.289.913 crashes in Ohio between Sep 2019 and Sep 2025 \\(in Franklin County: 115.682)
+                \item Most relevant columns: coordinates and ''Narrative'' (written police report) $\rightarrow$ is a crash associated with food?
+            \end{itemize}
+            
+      
         \end{itemize}
     \end{block}
     
 \end{frame}
 
-
-\begin{frame}{Fast-food location filtering and things to compare}
-    Our subsets to compare and the reasoning behind it:
-    \begin{itemize}
-        \item Top 20 non-pizza fast food chains
-        \begin{itemize}
-            \item In queue, food is handed through window
-            \item Stressful situation to handle food and driving away at the same time, very distracted
-        \end{itemize}
-        \item Top X pizza chains
-        \begin{itemize}
-            \item Food is brought to the curb
-            \item No pressure of having to make space for someone immideatly, more relaxed
-            \item Less distraction
-        \end{itemize} 
-        \item Top Y coffee chains
-        \begin{itemize}
-            \item Does the need for coffeine play a role?
-        \end{itemize}
-        \item Top Z gas stations
-        \begin{itemize}
-            \item similar road situation, but less distracted due to food
-        \end{itemize}
-    \end{itemize}
+\begin{frame}{Model: Geospatial Autocorrelation}
+    \begin{figure}
+    \begin{minipage}[c]{0.47\linewidth}
+        %\centering
+        \includegraphics[width=\linewidth]{images/crash_map_visualization_franklin.png}
+        \caption{Franklin county map}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.47\linewidth}
+        \includegraphics[width=\linewidth]{images/crash_map_visualization_zoomed_in.png}
+        \caption{Zoomed in to 5th Avenue}
+    %\caption{Number of crashes by location in Franklin County}
+    \end{minipage}
+    \end{figure}
+    \vspace{0pt}
+    \begin{center}
+        Geographically Weighted Regression (GWR)
+    \end{center}
+    \begin{equation*}
+        D_{\text{Crash}}(x,y) = a(x,y) + b(x,y) \cdot D_{\text{Fastfood}}(x,y) + c
+    \end{equation*}
     
 \end{frame}
 
+
+
+
+%\begin{frame}{Fast-food location filtering and things to compare}
+%    Our subsets to compare and the reasoning behind it:
+%    \begin{itemize}
+%        \item Top 20 non-pizza fast food chains
+%        \begin{itemize}
+%            \item In queue, food is handed through window, everyone stays in the car
+%            \item Stressful situation to handle food and driving away at the same time
+%            \item Very distracted
+%        \end{itemize}
+%        \item Top 10 pizza chains
+%        \begin{itemize}
+%            \item Food is brought to the curb, or people get out of the car to pick it up
+%            \item No pressure of having to make space for someone immideatly, more relaxed
+%            \item Less distraction
+%        \end{itemize} 
+%    \end{itemize}
+%    
+%    \begin{center}
+%    \includegraphics[width=0.9\textwidth]{images/Restaurant_pizza_distances_to_traffic_light.png}
+%    \end{center}
+%\end{frame}
+
 \section{Analysis}
-\begin{frame}{Beyond the Drive-Thru: What the Data Really Says}
+\begin{frame}{Beyond the Drive-Thru: What the Data Says}
     \begin{itemize}
-        \item Causality vs Correlation
-        \item Graph of Crashes over hour of the day, peak at lunch for fast-food crashes
+        \item Moran's I analysis helps detect clusters and outliers
     \end{itemize}
-    %\centering
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\linewidth]{images/spatial_correlogram.png}
+        \caption{Spatial correlogram using Moran's I as a measure of the likelihood of clustering of certain events for the fast food dataset.}
+    \end{figure}
     % Placeholder for map
     %\fbox{\parbox[c][5cm][c]{8cm}{\centering Map goes here}}
 \end{frame}
 
-\begin{frame}{Trends Over Time}
+%\section{Pitfalls}
+%\begin{frame}{Fast Food, Slow Truths: Decoding Dirty Data in Crash Reports}
+%    \begin{itemize}
+%        \item Accounting for different varieties in spelling of restaurant names
+%        \item Entering missing information from secondary sources
+%        \item Reports are written by people with different jargons and estimations (e.g.~exact locations)
+%    \end{itemize}
+    %\centering
+    % Placeholder for map
+    %\fbox{\parbox[c][5cm][c]{8cm}{\centering Map goes here}}
+%\end{frame}
+
+\begin{frame}{Correlating crash sites to fast food locations}
     \centering
-    % Placeholder for plot
-    \fbox{\parbox[c][5cm][c]{8cm}{\centering Trend plot goes here}}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.99\linewidth]{images/grid_map_GWR_statistics.png}
+        \caption{Grid of crash locations and fast food chain proximity correlations.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Correlating crash sites to pizza restaurant locations}
+    \centering
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.99\linewidth]{images/grid_map_GWR_statistics_pizza.png}
+        \caption{Grid of crash locations and pizza restaurant chain proximity correlations.}
+    \end{figure}
 \end{frame}
 
 \section{Conclusion}
-\begin{frame}{Key Takeaways}
-    \begin{itemize}
-        \item Placeholder conclusion 1
-        \item Placeholder conclusion 2
-        \item Placeholder conclusion 3
-    \end{itemize}
+
+\begin{frame}{Outlook}
+\begin{itemize}
+    \item Further considerations: Top 10 coffee chains
+        \begin{itemize}
+            \item Does the need for caffeine play a role?
+        \end{itemize}
+     \item Further considerations: Top 10 gas stations
+        \begin{itemize}
+            \item Similar road situation, but less distracted because of food
+        \end{itemize}
+\end{itemize}
+
 \end{frame}
 
-\begin{frame}{Thank You!}
-    \centering
-    Questions?
+\begin{frame}{Key Takeaways}
+    \begin{minipage}[c]{0.47\linewidth}
+        \begin{itemize}
+            \item Car crash occurrences seem to be correlated to fast food restaurant proximity
+            \item But: Restaurants often serve as landmarks in the crash reports
+            \item OpenStreetMap data is vulnerable to inaccuracies
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}[c]{0.47\linewidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{images/car_crash_fastfood.png}
+            \caption{'Drive-thru' taken too literally :-)}
+        \end{figure}
+    \end{minipage}
 \end{frame}
+
 
 \end{document}
