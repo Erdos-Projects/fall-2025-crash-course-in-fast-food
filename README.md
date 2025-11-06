@@ -224,6 +224,10 @@ Contains the Jupyter notebooks that were used for data exploration, modeling, vi
 
    An analysis how to efficiently extract the fast food brand names from the narratives. We know that the current method has false-positive entries (in one narrative entry, an officer's name is "McDonald" and since we had to be more forgiving regarding the spelling of "McDonald's", this entry is included), but assume them to be small enough to not change the general story of the data. First tests have been done only for the small subset of data that contains only the "Narrative" column, after finding a good enough method, the name analysis is applied to the full original file so that the location and cuisine tags can be used as well.
 
+6. prepare_fast_food_location_data.ipynb
+
+Visualization of fast food restaurant locations and crashes in the same map for exploratory analysis
+
 ### presentation
 Contains the .tex and pdf of the presentation. As the executive summary, the file has been created using Overleaf. The recording is not included due to file size restrictions.
 
