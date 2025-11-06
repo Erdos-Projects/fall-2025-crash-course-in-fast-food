@@ -185,11 +185,21 @@ X1                        5.730      5.869     -8.084      8.850     11.054
 ===========================================================================
 ```
 
-
+<img width="869" height="450" alt="grid_map_GWR_statistics_pizza" src="https://github.com/user-attachments/assets/98bc335f-7813-4adf-81eb-9ad5cc3e6f96" />
 
 ### Discussion
 
-We observe very little to no negative 
+We observe very little to no negative correlation for the mapping of pizza restaurants to crash sites compared to the other fast food chains. Both analyses show their most extreme data in the South East of Columbus, which is an area with very few restaurants in general, so the analysis might over- oder underestimate the correlation if there are very few data points.
+
+The fast food restaurant analysis shows a slightly positive correlation, which backs our hypothesis. The trend that the pizza restaurants have a smaller correlation would also match our hypothesis, but we understand that the smaller dataset is more prone to errors.
+
+### Next steps
+
+Several features from the OSM API (like traffic lights, pedestrian crossings) have not yet been thoroughly integrated into the analysis. Another check needs to be done to make sure that the tag "drive thru" is correctly assigned to all entries in the original data from OSM, which likely requires manual data entries. Visual analysis of the locations of traffic lights shows that they are not necessarily close to the restaurants. Identifying a positive or negative correlation is challenging if there is no access to historical data that links "no traffic light" to "traffic light" or "no restaurant" to "restaurant".
+
+<img width="467" height="303" alt="crash_map_visualization_franklin" src="https://github.com/user-attachments/assets/1837f67a-86ff-46a9-af71-bc950d32829d" />
+
+For a future comparison of the aspect of "fast food cravings" to just general entrance/exit crash "hot spots", we could analyze loactions of coffee shops and gas stations. While coffee shops still have food, they are lest frequented for real meals. Gas stations on the other hand have a similar entrance/exit path, but the "drive thru character" is different, because drivers usually need to get out of the car. In addition, gas stations are not usually frequented for meals, so being hungry would likely not be the reason for distracted driving leading to a crash.
 
 # Description of Repository
 
