@@ -216,7 +216,9 @@ Contains the Jupyter notebooks that were used for data exploration, modeling, vi
 
    This file loads the original file such that one can extract relevant columns to new smaller csv files that one can use as dataframes in the notebooks.
 
+5. get_traffic_light_locations.ipynb
 
+   An exploratory analysis to identify distances between fast food locations and traffic lights extracted from OSM. This analysis has shown to be not really meaningful, this is why it is not included in the final discussion.
 
 ### presentation
 Contains the .tex and pdf of the presentation. As the executive summary, the file has been created using Overleaf. The recording is not included due to file size restrictions.
