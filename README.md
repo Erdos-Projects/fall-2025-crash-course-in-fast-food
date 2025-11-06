@@ -198,9 +198,6 @@ The content is presented in the following folders:
 ### Data
 Contains partial and filtered csv that have been generated from the main file received via download link from the Ohio Department of Public Safety. Furthermore, there are .gpkg files where location coordinates have been transformed to geospatial dataframes for plotting.
 
-### executive summary
-Contains both the .tex file and the pdf generated from the file. The file has been created using Overleaf. While Overleaf allows for zip file export to include all connected files, we believed that this was not necessary for the goal of the report.
-
 ### Notebooks
 Contains the Jupyter notebooks that were used for data exploration, modeling, visualization and further analysis.
 
@@ -226,7 +223,14 @@ Contains the Jupyter notebooks that were used for data exploration, modeling, vi
 
 6. prepare_fast_food_location_data.ipynb
 
-Visualization of fast food restaurant locations and crashes in the same map for exploratory analysis
+   Visualization of fast food restaurant locations and crashes in the same map for exploratory analysis
+
+7. fastfoodnameanalysis.ipynb
+
+   Thorough analysis of names of fast food restaurants to get an overview of the necessary filtering and merging.
+
+### executive summary
+Contains both the .tex file and the pdf generated from the file. The file has been created using Overleaf. While Overleaf allows for zip file export to include all connected files, we believed that this was not necessary for the goal of the report.
 
 ### presentation
 Contains the .tex and pdf of the presentation. As the executive summary, the file has been created using Overleaf. The recording is not included due to file size restrictions.
