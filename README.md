@@ -208,6 +208,11 @@ Contains the .tex and pdf of the presentation. As the executive summary, the fil
 Contains the Jupyter notebooks that were used for data exploration, modeling, visualization and further analysis.
 
 1. statistics_fastfood.ipynb and statistics_pizza.ipnb
+   
    We use the esda module for a Moran analysis and the mgwr module to perform the correlation with a grid coordinate system.
+
+3. export_XX_locations_from_osm.py
+   
+   There are three python scripts that obtain the data of a certain type of location from the OSM (OpenStreetMap) overpass API. The data extraction is refined using the boundaries of the state of Ohio. Furthermore, depending on the category, certain name adjustments are implemented to account for inconsistent naming conventions and heterogeneous tags/keywords regarding cuisine.
 
 
