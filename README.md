@@ -208,17 +208,21 @@ Contains the Jupyter notebooks that were used for data exploration, modeling, vi
    
    We use the esda module for a Moran analysis and the mgwr module to perform the correlation with a grid coordinate system.
 
-3. export_XX_locations_from_osm.py
+2. export_XX_locations_from_osm.py
    
    There are three python scripts that obtain the data of a certain type of location from the OSM (OpenStreetMap) overpass API. The data extraction is refined using the boundaries of the state of Ohio. Furthermore, depending on the category, certain name adjustments are implemented to account for inconsistent naming conventions and heterogeneous tags/keywords regarding cuisine.
 
-4. crash_data_fullfile_checks.ipynb
+3. crash_data_fullfile_checks.ipynb
 
    This file loads the original file such that one can extract relevant columns to new smaller csv files that one can use as dataframes in the notebooks.
 
-5. get_traffic_light_locations.ipynb
+4. get_traffic_light_locations.ipynb
 
    An exploratory analysis to identify distances between fast food locations and traffic lights extracted from OSM. This analysis has shown to be not really meaningful, this is why it is not included in the final discussion.
+
+5. find_restaurants_in_fullcrashfile_narratives.ipynb and find_restaurants_in_narratives.ipynb
+
+   An analysis how to efficiently extract the fast food brand names from the narratives. We know that the current method has false-positive entries (in one narrative entry, an officer's name is "McDonald" and since we had to be more forgiving regarding the spelling of "McDonald's", this entry is included), but assume them to be small enough to not change the general story of the data. First tests have been done only for the small subset of data that contains only the "Narrative" column, after finding a good enough method, the name analysis is applied to the full original file so that the location and cuisine tags can be used as well.
 
 ### presentation
 Contains the .tex and pdf of the presentation. As the executive summary, the file has been created using Overleaf. The recording is not included due to file size restrictions.
